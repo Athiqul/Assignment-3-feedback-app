@@ -14,9 +14,16 @@
                 </svg>
             </button>
         </div>
-        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+        <?php if(isset($_SESSION['user'])):?>
+            <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+            <span class="text-sm font-semibold leading-6 text-gray-900"><?=$_SESSION['user']['name']?></span>
+        </div>
+        <?php else:?>
+            <div class="hidden lg:flex lg:flex-1 lg:justify-end">
             <a href="./login.php" class="text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
         </div>
+        <?php endif?>
+        
     </nav>
     <!-- Mobile menu, show/hide based on menu open state. -->
     <div class="lg:hidden" role="dialog" aria-modal="true">

@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Kyla Gillespie",
+        "email": "dekyq@mailinator.com",
+        "password": "$2y$10$lSXUJY8cKOWoCQFXm8rL.uUPJIBLKUw4HhzB8jwjnwcYN8S1bJjN2",
+        "feedback_token": "9ea3a390",
+        "created_at": "2024-07-09 15:42:25",
+        "updated_at": "2024-07-09 15:42:25"
+    },
+    {
+        "name": "Nissim Barnes",
+        "email": "sysuzos@mailinator.com",
+        "password": "$2y$10$a7W9mTIppxN7QoD5NsSxNe3yO.nnuQcxVOXXe5uJpNPpd6Niu4oUS",
+        "feedback_token": "2178f619",
+        "created_at": "2024-07-09 15:49:20",
+        "updated_at": "2024-07-09 15:49:20"
+    },
+    {
+        "name": "Athiqul Hasan",
+        "email": "athiqulhasan.4@gmail.com",
+        "password": "$2y$10$8L\/rrGGVbz0EEJTgD9Xj0O7VzOhSNOjF86xwaaju5zWidlEPsptqC",
+        "feedback_token": "dc998b10",
+        "created_at": "2024-07-09 15:50:07",
+        "updated_at": "2024-07-09 15:50:07"
+    }
+]

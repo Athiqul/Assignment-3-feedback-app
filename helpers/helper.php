@@ -34,9 +34,9 @@ function flashMessage($key,$message='')
 
 //String length handling
 
-function strLength($str,$min=3,$max=50)
+function strLength($str,$min=3,$max=50):bool
 {
-    return (strlen($str) >= $min && strlen($str) <= $max);
+    return (strlen($str) >= $min && strlen($str) <= $max)?true:false;
 }
 
 //Create dd function
@@ -52,13 +52,18 @@ function dd($data)
 
 function loadUserData()
 {
-    $usersJson=require_once __DIR__.'/../files/users.json';
+    $usersJson=__DIR__.'/../files/users.json';
     if(!file_exists($usersJson))
     {
         return [];
     }
 
     $jsonData = file_get_contents($usersJson);
+    if(json_last_error()!==JSON_ERROR_NONE)
+    {
+        return [];
+    }
+   // dd(json_decode($jsonData, true));
     return json_decode($jsonData, true);
 }
 
@@ -66,6 +71,11 @@ function loadUserData()
 
 function saveUserData($userData)
 {
+    //Remove existing user data
+    if(file_exists(__DIR__.'/../files/users.json'))
+    {
+        unlink(__DIR__.'/../files/users.json');
+    }
     $jsonData=json_encode($userData, JSON_PRETTY_PRINT);
     file_put_contents(__DIR__.'/../files/users.json', $jsonData);
 }
@@ -77,7 +87,36 @@ function createFeedbackToken()
     return bin2hex(random_bytes(4));
 }
 
-//Request old value
+//find user by email
+
+function findUserByEmail($email)
+{
+    $userData=loadUserData();
+   // dd($userData);
+    foreach($userData as $user)
+    {
+        if($user['email'] === $email)
+        {
+            return $user;
+        }
+    }
+    return null;
+}
+
+//Find user by feedback token
+
+function findUserByFeedbackToken($token)
+{
+    $userData=loadUserData();
+    foreach($userData as $user)
+    {
+        if($user['feedback_token'] === $token)
+        {
+            return $user;
+        }
+    }
+    return null;
+}
 
 
 

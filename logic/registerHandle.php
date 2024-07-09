@@ -40,16 +40,12 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         $errors['confirm_password']="Passwords do not match with confirm password field!";
     }
 
-    if(strLength($password,8))
+    if(strlen($password)<6)
     {
         $errors['password']="Password must be at least 8 characters long and maximum 50 characters long!";
     }
 
-    //name handling
-    if(strLength($name,3,50))
-    {
-        $errors['name']="Name must be at least 3 characters long Or Maximum 50 charactests long!";
-    }
+
 
 
     //Check email already exist 
@@ -68,6 +64,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         ];
 
         $users=loadUserData();
+     // dd($users);
         $users[]=$data;
         saveUserData($users);
 
@@ -75,7 +72,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 
         header('Location:login.php');
     }else{
-        flashMessage('error','Something went wrong please try again!');
+        flashMessage('error','You missed something! please try again!');
     }
     
 
