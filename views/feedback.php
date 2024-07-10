@@ -1,5 +1,5 @@
 
-<?php require_once __DIR__.'/logic/feedbackReceive.php'?>
+<?php require_once __DIR__.'/../logic/feedbackReceive.php'?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100">
-
+ <?php require_once __DIR__ .'/../includes/header.php'?>
 
 <main class="">
     <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12">
@@ -24,12 +24,35 @@
                     </div>
 
                     <div class="mt-10 mx-auto w-full max-w-xl">
-                        <form class="space-y-6" action="#" method="POST">
+                    <?php 
+                        
+                        $errorAlert=flashMessage('error');
+                       
+                        ?>
+                        <?php if (isset($errorAlert)) : ?>
+                            <div class="mt-2 bg-red-500 text-sm text-white rounded-lg p-4" role="alert">
+                                <span class="font-bold">Error!</span> <?= $errorAlert?>
+                            </div>
+                        <?php endif ?>
+                    <?php 
+                        
+                        $successAlert=flashMessage('success');
+                       
+                        ?>
+                        <?php if (isset($successAlert)) : ?>
+                            <div class="mt-2 bg-teal-500 text-sm text-white rounded-lg p-4" role="alert">
+                                <span class="font-bold">Success!</span> <?= $successAlert?>
+                            </div>
+                        <?php endif ?>
+                        <form class="space-y-6" action="<?=getBaseUrl().'feedback/'.$user['feedback_token']?>" method="POST">
                             <div>
                                 <label for="feedback" class="block text-sm font-medium leading-6 text-gray-900">Don't hesitate, just do it!</label>
                                 <div class="mt-2">
                                     <textarea required name="feedback" id="feedback" cols="30" rows="10" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
                                 </div>
+                                <?php if (isset($errors['feedback'])) : ?>
+                                        <span class="mt-2 text-red-500 text-xs"><?= $errors['email'] ?></span>
+                                    <?php endif ?>
                             </div>
 
                             <div>
@@ -43,11 +66,7 @@
     </div>
 </main>
 
-<footer class="bg-white">
-    <div class="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center justify-center lg:px-8">
-        <p class="text-center text-xs leading-5 text-gray-500">&copy; 2024 TruthWhisper, Inc. All rights reserved.</p>
-    </div>
-</footer>
+<?php require_once __DIR__ .'/../includes/footer.php'?>
 
 </body>
 </html>

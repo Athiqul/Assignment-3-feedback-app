@@ -54,23 +54,34 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     //dd($errors);
     if(empty($errors))
     {
-        $data=[
-            'name'=>$name,
-            'email'=>$email,
-            'password'=>password_hash($password, PASSWORD_DEFAULT),
-            'feedback_token'=>createFeedbackToken(),
-            'created_at'=>date('Y-m-d H:i:s'),
-            'updated_at'=>date('Y-m-d H:i:s'),
-        ];
 
-        $users=loadUserData();
-     // dd($users);
-        $users[]=$data;
-        saveUserData($users);
+        //Check email already exists
+        $check=findUserByEmail($email);
+        if($check)
+        {
+           $errors['email']="Email already exists into this system";
+             
+        }else {
+            $data=[
+                'name'=>$name,
+                'email'=>$email,
+                'password'=>password_hash($password, PASSWORD_DEFAULT),
+                'feedback_token'=>createFeedbackToken(),
+                'created_at'=>date('Y-m-d H:i:s'),
+                'updated_at'=>date('Y-m-d H:i:s'),
+            ];
+    
+    
+         // dd($users);
+            $users[]=$data;
+            saveUserData($users);
+    
+            flashMessage('success','Successfully account created! Now you can login');
+    
+            header('Location:/login');
+        }
 
-        flashMessage('success','Successfully account created! Now you can login');
-
-        header('Location:login.php');
+      
     }else{
         flashMessage('error','You missed something! please try again!');
     }

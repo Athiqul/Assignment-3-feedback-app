@@ -48,7 +48,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
                 //Login successfully
                 $_SESSION['user'] = $user;
                 flashMessage('success','Login successfully!');
-                header('Location:dashboard.php');
+                header('Location:dashboard');
             }
             else{
                 flashMessage('error','invalid email or password!');

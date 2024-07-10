@@ -26,7 +26,7 @@
                     <div class="pt-8 text-base font-semibold leading-7">
                         <p class="text-gray-900">Sounds interesting?</p>
                         <p>
-                            <a href="./login.php" class="text-sky-500 hover:text-sky-600">Let's start!</a>
+                            <a href="/login" class="text-sky-500 hover:text-sky-600">Let's start!</a>
                         </p>
                     </div>
                 </div>

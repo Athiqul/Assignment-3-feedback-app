@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php require_once __DIR__ . '/logic/registerHandle.php' ?>
+<?php require_once __DIR__ . '/../logic/registerHandle.php' ?>
 <html lang="en">
 
 <head>
@@ -11,7 +11,7 @@
 
 <body class="bg-gray-100">
 
-    <?php require_once __DIR__ . '/includes/header.php'; ?>
+    <?php require_once __DIR__ . '/../includes/header.php'; ?>
 
     <main class="">
         <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12">
@@ -36,7 +36,7 @@
                         <?php endif ?>
 
                         <div class="mt-10 mx-auto w-full max-w-xl">
-                            <form class="space-y-6" action="<?= $_SERVER['PHP_SELF'] ?>" method="POST" novalidate>
+                            <form class="space-y-6" action="/register" method="POST" novalidate>
                                 <div>
                                     <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Name</label>
                                     <div class="mt-2">
@@ -89,7 +89,7 @@
 
                             <p class="mt-10 text-center text-sm text-gray-500">
                                 Already have an account?
-                                <a href="./login.php" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Login!</a>
+                                <a href="/login" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Login!</a>
                             </p>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
         </div>
     </main>
 
-    <?php require_once __DIR__ . '/includes/footer.php'; ?>
+    <?php require_once __DIR__ . '/../includes/footer.php'; ?>
 
 </body>
 

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php require_once __DIR__ .'/logic/loginHandler.php'?>
+<?php require_once __DIR__ .'/../logic/loginHandler.php'?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
 </head>
 <body class="bg-gray-100">
 
-<?php require_once __DIR__.'/includes/header.php'; ?>
+<?php require_once __DIR__.'/../includes/header.php'; ?>
 
 <main class="">
     <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12">
@@ -43,7 +43,7 @@
                                 <span class="font-bold">Success!</span> <?= $successAlert?>
                             </div>
                         <?php endif ?>
-                        <form class="space-y-6" action="<?php echo $_SERVER['PHP_SELF']?>" method="POST" novalidate>
+                        <form class="space-y-6" action="/login" method="POST" novalidate>
                             <div>
                                 <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
                                 <div class="mt-2">
@@ -78,7 +78,7 @@
 
                         <p class="mt-10 text-center text-sm text-gray-500">
                             Not a member?
-                            <a href="./register.php" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Register now!</a>
+                            <a href="/register" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Register now!</a>
                         </p>
                     </div>
                 </div>
@@ -87,7 +87,7 @@
     </div>
 </main>
 
-<?php require_once __DIR__.'/includes/footer.php'; ?>
+<?php require_once __DIR__.'/../includes/footer.php'; ?>
 
 </body>
 </html>
